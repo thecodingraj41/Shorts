@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Ride Tracker</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #111;
+        color: white;
+      }
+
+      .phone {
+        width: 350px;
+        height: 700px;
+        background: #000;
+        border-radius: 35px;
+        overflow: hidden;
+        position: relative;
+        border: 5px solid #333;
+      }
+
+      /* Map */
+
+      .map {
+        height: 65%;
+        background:
+          linear-gradient(90deg, #222 2px, transparent 2px),
+          linear-gradient(#222 2px, transparent 2px), #151515;
+
+        background-size: 50px 50px;
+        position: relative;
+      }
+
+      .route {
+        position: absolute;
+        width: 4px;
+        height: 280px;
+        background: #00ff88;
+        left: 50%;
+        top: 50px;
+        transform: translateX(-50%);
+        box-shadow: 0 0 20px #00ff88;
+      }
+
+      .pin {
+        position: absolute;
+        font-size: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .start {
+        top: 25px;
+      }
+
+      .end {
+        bottom: 20px;
+      }
+
+      /* Car */
+
+      .car {
+        position: absolute;
+        left: 50%;
+        top: 40px;
+        transform: translateX(-50%);
+        font-size: 40px;
+
+        animation: drive 8s linear forwards;
+      }
+
+      @keyframes drive {
+        0% {
+          top: 40px;
+        }
+
+        100% {
+          top: 330px;
+        }
+      }
+
+      /* Bottom Panel */
+
+      .panel {
+        height: 35%;
+        padding: 20px;
+        background: #101010;
+      }
+
+      .title {
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .driver {
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .avatar {
+        width: 55px;
+        height: 55px;
+        background: #00ff88;
+        border-radius: 50%;
+      }
+
+      .name {
+        line-height: 1.6;
+      }
+
+      .status {
+        margin-top: 20px;
+        color: #00ff88;
+        font-size: 18px;
+      }
+
+      .timer {
+        margin-top: 15px;
+        font-size: 40px;
+        font-weight: bold;
+      }
+
+      .complete {
+        display: none;
+        text-align: center;
+        margin-top: 30px;
+        color: #00ff88;
+        font-size: 30px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="phone">
+      <div class="map">
+        <div class="pin start">📍</div>
+
+        <div class="route"></div>
+
+        <div class="car">🚗</div>
+
+        <div class="pin end">🏠</div>
+      </div>
+
+      <div class="panel">
+        <div class="title">Uber Ride</div>
+
+        <div class="driver">
+          <div class="avatar"></div>
+
+          <div class="name">
+            Rahul ⭐4.9 <br />
+            Swift • DL 01 AB 1234
+          </div>
+        </div>
+
+        <div class="status" id="status">Driver arriving...</div>
+
+        <div class="timer" id="time">5 min</div>
+
+        <div class="complete" id="done">✔ Ride Completed</div>
+      </div>
+    </div>
+
+    <script>
+      let time = 5;
+
+      const countdown = setInterval(() => {
+        time--;
+
+        document.getElementById("time").innerHTML = time + " min";
+
+        if (time <= 0) {
+          clearInterval(countdown);
+
+          document.getElementById("status").innerHTML = "Destination reached";
+
+          document.getElementById("time").style.display = "none";
+
+          document.getElementById("done").style.display = "block";
+        }
+      }, 1600);
+    </script>
+  </body>
+</html>
