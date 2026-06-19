@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Dynamic Island</title>
+  </head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    body{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #111;
+    }
+    .phone{
+        width: 300px;
+        height: 600px;
+        background: #000;
+        border-radius: 40px;
+        border: 6px solid #333;
+        position: relative;
+        overflow: hidden;
+    }
+    .island{
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 110px;
+        height: 30px;
+        background: #000;
+        border-radius: 30px;
+        transition: 0.3s;
+        overflow: hidden;
+        color: white;
+        background: blue;
+    }
+
+    .island.active{
+        width: 250px;
+        height: 120px;
+
+    }
+
+    .content{
+        opacity: 0;
+        transition: 0.4s;
+        padding: 15px;
+    }
+    .active .content{
+        opacity: 1;
+    }
+    .row{
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    .avatar{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: linear-gradient(45deg,#ff00cc,#3333ff);
+    }
+    .name{
+        font-size: 14px;
+    }
+    .status{
+        color: #aaa;
+        font-size: 12px;
+        margin-top: 3px;
+    }
+    .buttons{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 12px;
+        padding: 0px 20px 0px 20px;
+    }
+    .btn{
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 18px;
+    }
+    .reject{
+        background: #ff3b30;
+    }
+    .accept{
+        background: #34c759;
+    }
+    .text{
+        color: white;
+        position: absolute;
+        bottom: 40px;
+        width: 100%;
+        text-align: center;
+        font-size: 18px;
+        animation: blink 1s infinite;
+    }
+    @keyframes blink{
+        50%{
+            opacity: 0.3;
+        }
+
+    }
+</style>
+  <body>
+    <div class="phone">
+      <div class="island" id="island">
+        <div class="content">
+          <div class="row">
+            <div class="avatar"></div>
+
+            <div>
+              <div class="name">Raj Calling...</div>
+
+              <div class="status">iPhone</div>
+            </div>
+          </div>
+
+          <div class="buttons">
+            <div class="btn reject">✖</div>
+
+            <div class="btn accept">✔</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text">Incoming Call...</div>
+    </div>
+
+    <script>
+      setTimeout(() => {
+        document.getElementById("island").classList.add("active");
+      }, 1000);
+    </script>
+  </body>
+</html>
