@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apple Pay Animation</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          Oxygen,
+          Ubuntu,
+          Cantarell,
+          "Open Sans",
+          "Helvetica Neue",
+          sans-serif;
+      }
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #000;
+        overflow: hidden;
+        color: white;
+      }
+      .phone {
+        width: 330px;
+        height: 550px;
+        background: #0b0b0b;
+        border-radius: 40px;
+        border: 5px solid #222;
+        padding: 30px;
+        position: relative;
+        overflow: hidden;
+      }
+      .header {
+        text-align: center;
+        font-size: 38px;
+        font-weight: bold;
+      }
+      .card {
+        margin-top: 20px;
+        height: 170px;
+        border-radius: 24px;
+        background: linear-gradient(135deg, #1f1f1f, #3b3b3b);
+        padding: 10px;
+        position: relative;
+        overflow: hidden;
+      }
+      .card::before {
+        content: "";
+        position: absolute;
+        width: 250px;
+        height: 250px;
+        background: radial-gradient(circle, rgba(255, 255, 255), transparent);
+        top: -100px;
+        right: -50px;
+      }
+      .card-number {
+        margin-top: 70px;
+        letter-spacing: 4px;
+        font-size: 22px;
+      }
+      .face {
+        width: 120px;
+        height: 120px;
+        border: 3px solid #fff;
+        border-radius: 30px;
+        margin: 40px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 50px;
+        transition: 0.5s;
+      }
+      .status {
+        text-align: center;
+        font-size: 18px;
+        color: #aaa;
+      }
+      .loader {
+        width: 0%;
+        height: 6px;
+        background: white;
+        border-radius: 20px;
+        margin-top: 30px;
+        transition: 0.3s;
+      }
+      .success {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background: #000;
+        opacity: 0;
+        transition: 1s;
+      }
+      .tick{
+        font-size: 90px;
+        font-weight:bold;
+        color: #00ff88;
+        background-color: green;
+        padding: 10px 20px;
+        border-radius: 50%;
+        animation: scale 3s infinite alternate;
+        margin: 10px;
+      }
+      @keyframes scale{
+        from{
+            transform: scale(1.3);
+        }
+        to{
+            transform: scale(1);
+        }
+      }
+      .done{
+        font-size: 28px;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="phone">
+      <div class="header"> Pay</div>
+
+      <div class="card">
+        <div class="card-number">•••• 4821</div>
+      </div>
+
+      <div class="face" id="face">🙂</div>
+
+      <div class="status" id="status">Ready To Pay</div>
+
+      <div class="loader" id="loader"></div>
+
+      <div class="success" id="success">
+        <div class="tick">✓</div>
+
+        <div class="done">Payment Successful</div>
+      </div>
+    </div>
+
+    <script>
+      const statusText = document.getElementById("status");
+
+      const loader = document.getElementById("loader");
+
+      setTimeout(() => {
+        statusText.innerText = "Face ID Authentication";
+
+        document.getElementById("face").style.boxShadow = "0 0 30px white";
+      }, 1500);
+
+      setTimeout(() => {
+        statusText.innerText = "Processing Payment...";
+
+        loader.style.width = "100%";
+      }, 2000);
+
+      setTimeout(() => {
+        document.getElementById("success").style.opacity = "1";
+      }, 3000);
+    </script>
+  </body>
+</html>
