@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gaming Console Startup</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        body{
+            height: 100vh;
+            background: #000;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+
+        }
+        .glow{
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle,#0066ff,transparent 70%);
+            animation: pulse 3s infinite;
+        }
+        @keyframes pulse{
+            50%{
+                transform:scale(1.2);
+                opacity: 0.5;
+            }
+        }
+        .particle{
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #00aaff;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #00aaff;
+            animation: float 4s linear infinite;
+        }
+        @keyframes float{
+            from{
+                transform: translateY(100vh);
+            }
+            to{
+                transform: translateY(-100vh);
+            }
+        }
+        .container{
+            text-align: center;
+            z-index: 2;
+        }
+        .logo{
+            font-size: 90px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 0 20 #00aaff,0 0 50px #0066ff;
+            opacity: 0;
+            transform: scale(0.6);
+            animation: show 2s forwards;
+            animation-delay: 3s;
+        }
+        @keyframes show{
+            to{
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .status{
+            margin-top: 20px;
+            font-size: 18px;
+            color: #aaa;
+            letter-spacing: 3px;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink{
+            50%{
+                opacity: 0.3;
+            }
+        }
+        .loading{
+            width: 250px;
+            height: 4px;
+            background: #222;
+            margin: 25px auto;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .fill{
+            height: 100%;
+            width: 0;
+            background: #00aaff;
+            animation: load 6s forwards;
+        }
+        @keyframes load{
+            to{
+                width: 100%;
+            }
+        }
+        .ready{
+            font-size: 25px;
+            color: #00ff88;
+            opacity: 0;
+            animation: appear 1s forwards;
+            animation-delay:6s ;
+        }
+        @keyframes appear{
+            to{
+                opacity: 1;
+            }
+        }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="glow"></div>
+
+    <div class="container">
+      <div class="logo">PS5</div>
+
+      <div class="status">BOOTING SYSTEM</div>
+
+      <div class="loading">
+        <div class="fill"></div>
+      </div>
+
+      <div class="ready">READY TO PLAY</div>
+    </div>
+
+    <script>
+      for (let i = 0; i < 80; i++) {
+        let p = document.createElement("div");
+
+        p.className = "particle";
+
+        p.style.left = Math.random() * 100 + "%";
+
+        p.style.animationDuration = 2 + Math.random() * 5 + "s";
+
+        p.style.opacity = Math.random();
+
+        document.body.appendChild(p);
+      }
+    </script>
+  </body>
+</html>
