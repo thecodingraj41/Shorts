@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Studio Intro</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      body {
+        height: 100vh;
+        background: #000;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+      }
+      .container {
+        text-align: center;
+      }
+      .logo {
+        font-size: 120px;
+        opacity: 0;
+        transform: scale(0.3);
+        transition: 2s;
+        text-shadow:
+          0 0 20px #ffd700,
+          0 0 50px #ffd700,
+          0 0 100px #ffd700;
+      }
+      .reveal {
+        opacity: 1;
+        transform: scale(1);
+      }
+      .title{
+        font-size: 60px;
+        font-weight: bold;
+        letter-spacing: 8px;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: 1.5s;
+      }
+      .show{
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .status{
+        margin-top: 30px;
+        font-size: 24px;
+        color: #aaa;
+        letter-spacing: 3px;
+      }
+      .present{
+        margin-top: 25px;
+        font-size: 28px;
+        opacity: 0;
+        transition: 1s;
+        color: #ffd700;
+      }
+      .visible{
+        opacity: 1;
+      }
+      .particle{
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background-color: white;
+        border-radius: 50%;
+        animation: float 5s linear infinite;
+      }
+      @keyframes float{
+        from{
+            transform: translateY(100vh);
+        }
+        to{
+            transform: translateY(-100vh);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="logo" id="logo">🎬</div>
+
+      <div class="title" id="title">RAJ STUDIOS</div>
+
+      <div class="status" id="status">INITIALIZING STUDIO...</div>
+
+      <div class="present" id="present">PRESENTS</div>
+    </div>
+
+    <script>
+      for (let i = 0; i < 500; i++) {
+        const p = document.createElement("div");
+        p.className = "particle";
+
+        p.style.left = Math.random() * 100 + "%";
+        p.style.animationDuration = 3 + Math.random() * 5 + "s";
+
+        document.body.appendChild(p);
+      }
+
+      const status = document.getElementById("status");
+
+      setTimeout(() => {
+        status.innerText = "LIGHTS ONLINE 💡";
+      }, 1500);
+
+      setTimeout(() => {
+        status.innerText = "GENERATING PARTICLES ✨";
+      }, 3000);
+
+      setTimeout(() => {
+        status.innerText = "REVEALING LOGO 🎬";
+
+        document.getElementById("logo").classList.add("reveal");
+
+        document.getElementById("title").classList.add("show");
+      }, 4500);
+
+      setTimeout(() => {
+        document.getElementById("present").classList.add("visible");
+
+        status.innerText = "READY";
+      }, 6500);
+    </script>
+  </body>
+</html>

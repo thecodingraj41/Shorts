@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Earth Zoom</title>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    body{
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #000;
+        color: white;
+    }
+    .container{
+        text-align: center;
+    }
+    .circle{
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 120px;
+        background: radial-gradient(circle,#1e90ff,#0b3d91);
+        box-shadow: 0 0 60px rgba(30,144,255,0.7);
+        transition: 1s;
+    }
+    .label{
+        margin-top: 40px;
+        font-size: 34px;
+        letter-spacing: 3px;
+        color: #00e5ff;
+    }
+    .progress{
+        width: 320px;
+        height: 8px;
+        background: #111;
+        margin-top: 25px;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+    .fill{
+        width: 0%;
+        height: 100%;
+        background: #00e5ff;
+        transition: 1s;
+        box-shadow: 0 0 20px #00e5ff;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="circle" id="planet">
+        🌍
+    </div>
+
+    <div class="label" id="text">
+        LOCATING EARTH...
+    </div>
+
+    <div class="progress">
+        <div class="fill" id="fill"></div>
+    </div>
+
+</div>
+
+<script>
+
+const text = document.getElementById("text");
+const planet = document.getElementById("planet");
+const fill = document.getElementById("fill");
+
+const steps = [
+    {
+        icon:"🌍",
+        text:"EARTH DETECTED",
+        progress:"25%"
+    },
+    {
+        icon:"🇮🇳",
+        text:"INDIA FOUND",
+        progress:"50%"
+    },
+    {
+        icon:"🏙️",
+        text:"DELHI LOCATED",
+        progress:"75%"
+    },
+    {
+        icon:"🏠",
+        text:"DESTINATION FOUND",
+        progress:"100%"
+    }
+];
+
+let i = 0;
+
+const interval = setInterval(()=>{
+
+    planet.innerHTML = steps[i].icon;
+    text.innerHTML = steps[i].text;
+    fill.style.width = steps[i].progress;
+
+    i++;
+
+    if(i === steps.length){
+        clearInterval(interval);
+    }
+
+},1800);
+
+</script>
+
+</body>
+</html>
