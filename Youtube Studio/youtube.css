@@ -1,0 +1,279 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+
+  background: #05070d;
+}
+
+/* BACKGROUND */
+
+.bg {
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(circle at center, rgba(255, 30, 30, 0.22), transparent 40%),
+    radial-gradient(circle at top, rgba(0, 220, 255, 0.08), transparent 45%),
+    #05070d;
+
+  animation: bgPulse 5s ease-in-out infinite;
+}
+
+@keyframes bgPulse {
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+/* PARTICLES */
+
+.particles span {
+  position: absolute;
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #ff3b3b;
+
+  box-shadow: 0 0 12px #ff3b3b;
+
+  animation: float 6s linear infinite;
+}
+
+.particles span:nth-child(1) {
+  left: 20%;
+  top: 80%;
+
+  animation-delay: 0s;
+}
+
+.particles span:nth-child(2) {
+  left: 35%;
+  top: 95%;
+
+  animation-delay: 1s;
+}
+
+.particles span:nth-child(3) {
+  left: 55%;
+  top: 90%;
+
+  animation-delay: 2s;
+}
+
+.particles span:nth-child(4) {
+  left: 70%;
+  top: 100%;
+
+  animation-delay: 3s;
+}
+
+.particles span:nth-child(5) {
+  left: 82%;
+  top: 85%;
+
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) scale(0.5);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-700px) scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* LOGO */
+
+.logo {
+  position: relative;
+  margin-bottom: 200px;
+  width: 340px;
+  height: 340px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* OUTER RING */
+
+.outer-ring {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+
+  border-radius: 50%;
+
+  border: 4px solid rgba(255, 60, 60, 0.2);
+
+  border-top: 4px solid #ff2b2b;
+
+  border-bottom: 4px solid #00e5ff;
+
+  box-shadow:
+    0 0 25px rgba(255, 0, 0, 0.45),
+    0 0 40px rgba(0, 229, 255, 0.2);
+
+  animation: rotateRing 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes rotateRing {
+  0% {
+    transform: rotate(0deg) scale(1);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.35);
+  }
+
+  50% {
+    transform: rotate(180deg) scale(1.08);
+    box-shadow:
+      0 0 45px rgba(255, 0, 0, 0.9),
+      0 0 80px rgba(0, 229, 255, 0.45);
+  }
+
+  100% {
+    transform: rotate(360deg) scale(1);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.35);
+  }
+}
+
+/* INNER RING */
+
+.inner-ring {
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(circle, #151515, #070707);
+
+  box-shadow:
+    inset 0 0 20px rgba(255, 255, 255, 0.08),
+    0 0 30px rgba(255, 50, 50, 0.25);
+}
+
+/* PLAY SHAPE */
+
+.play-shape {
+  position: absolute;
+
+  width: 0;
+  height: 0;
+
+  border-top: 28px solid transparent;
+  border-bottom: 28px solid transparent;
+  border-left: 48px solid #ff2b2b;
+
+  filter: drop-shadow(0 0 15px #ff2b2b);
+
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(1.18);
+
+    filter: drop-shadow(0 0 28px #ff2b2b);
+  }
+}
+
+/* TITLE */
+
+.title {
+  position: absolute;
+  bottom: -45px;
+
+  display: flex;
+  gap: 8px;
+
+  font-size: 54px;
+  font-weight: 800;
+
+  letter-spacing: 3px;
+
+  color: #fff;
+
+  text-shadow:
+    0 0 10px white,
+    0 0 25px #ff2b2b;
+}
+
+.title span {
+  opacity: 0;
+
+  transform: translateY(25px);
+
+  animation: textUp 0.7s forwards;
+}
+
+.title span:nth-child(1) {
+  animation-delay: 1.4s;
+}
+
+.title span:nth-child(2) {
+  animation-delay: 1.7s;
+}
+
+.title span:nth-child(3) {
+  animation-delay: 2s;
+}
+
+@keyframes textUp {
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+/* SUBTITLE */
+
+.subtitle {
+  position: absolute;
+
+  bottom: -65px;
+
+  font-size: 15px;
+
+  letter-spacing: 8px;
+
+  color: #8fa5b8;
+
+  opacity: 0;
+
+  animation: fadeIn 1s forwards;
+
+  animation-delay: 2.4s;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}

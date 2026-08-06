@@ -1,0 +1,180 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  height: 100vh;
+  overflow: hidden;
+  background: #080808;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.scene {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 190, 0, 0.08),
+    transparent 35%
+  );
+}
+.ambient-glow {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: #fff000;
+  filter: blur(120px) opacity(0.15);
+  animation: ambientPulse 3s ease-in-out infinite;
+}
+@keyframes ambientPulse {
+  50% {
+    transform: scale(1.3);
+    opacity: 0.3;
+  }
+}
+.camera-logo {
+  position: relative;
+  width: 300px;
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: logoEntry 1.2s ease forwards;
+}
+.outer-frame {
+  position: relative;
+  width: 260px;
+  height: 180px;
+  border-radius: 35px;
+  background: linear-gradient(145deg, #ffd84d, #ff9500, #d86b00);
+  box-shadow:
+    0 0 25px rgba(255, 170, 0, 0.5),
+    inset 0 0 25px rgba(255, 255, 255, 0.25);
+  animation: framePulse 3s ease-in-out infinite;
+}
+.lens {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 125px;
+  height: 125px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    #050505 0%,
+    #151515 35%,
+    #333 60%,
+    #111 70%
+  );
+  border: 8px solid #f5a900;
+  box-shadow:
+    0 0 20px rgba(0, 0, 0, 0.8),
+    inset 0 0 25px #000;
+  animation: lensRotate 6s linear infinite;
+}
+.lens-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 42px;
+  height: 42px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 30% 25%,
+    #fff,
+    #7c3aed 15%,
+    #111 55%,
+    #000 70%
+  );
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.8);
+  animation: corePulse 2s ease-in-out infinite;
+}
+.lens-glare {
+  position: absolute;
+  top: 25px;
+  left: 30px;
+  width: 35px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8);
+  filter: blur(5px);
+  transform: rotate(-35deg);
+  animation: glareMove 3s ease-in-out infinite;
+}
+.flash {
+  position: absolute;
+  top: -18px;
+  right: 30px;
+  width: 55px;
+  height: 25px;
+  border-radius: 10px 10px 0 0;
+  background: #ffb000;
+}
+.brand-name {
+  margin-top: 35px;
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: 12px;
+  color: #fff;
+  opacity: 0;
+  animation: textReveal 1s ease forwards 2s;
+}
+.tagline {
+  margin-top: 10px;
+  font-size: 12px;
+  letter-spacing: 5px;
+  color: #888;
+  opacity: 0;
+  animation: textReveal 1s ease forwards 3s;
+}
+@keyframes logoEntry {
+  from {
+    opacity: 0;
+    transform: scale(0.4) rotate(-15deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+@keyframes framePulse {
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 50px rgba(255, 170, 0, 0.8) inset 0 0 35px
+      rgba(255, 255, 255, 0.35);
+  }
+}
+@keyframes lensRotate {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+@keyframes corePulse {
+  50% {
+    transform: translate(-50%, -50%) scale(1.3);
+    box-shadow: 0 0 40px rgba(124, 58, 237, 1);
+  }
+}
+@keyframes glareMove {
+  50% {
+    transform: translate(35px, 20px) rotate(-35deg);
+    opacity: 0.3;
+  }
+}
+@keyframes textReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

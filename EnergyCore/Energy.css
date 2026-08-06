@@ -1,0 +1,315 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+
+  overflow: hidden;
+
+  background: #02040a;
+
+  font-family: Arial, sans-serif;
+}
+
+.scene {
+  position: relative;
+
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  background:
+    radial-gradient(circle at center, rgba(0, 229, 255, 0.08), transparent 35%),
+    #02040a;
+}
+
+.stars {
+  position: absolute;
+
+  inset: 0;
+
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.8) 1px,
+    transparent 1px
+  );
+
+  background-size: 90px 90px;
+
+  opacity: 0.35;
+
+  animation: starsMove 12s linear infinite;
+}
+
+@keyframes starsMove {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(90px);
+  }
+}
+
+.core-system {
+  position: relative;
+
+  width: 420px;
+  height: 420px;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.outer-ring {
+  position: absolute;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(0, 229, 255, 0.5);
+
+  box-shadow:
+    0 0 20px rgba(0, 229, 255, 0.3),
+    inset 0 0 20px rgba(0, 229, 255, 0.15);
+}
+
+.ring-one {
+  width: 360px;
+  height: 360px;
+
+  border-top-color: #00e5ff;
+
+  animation:
+    rotateOne 8s linear infinite,
+    ringPulse 3s ease-in-out infinite;
+}
+
+.ring-two {
+  width: 300px;
+  height: 300px;
+
+  border-right-color: #00ffb3;
+
+  animation:
+    rotateTwo 6s linear infinite reverse,
+    ringPulse 3s ease-in-out infinite 0.5s;
+}
+
+.ring-three {
+  width: 230px;
+  height: 230px;
+
+  border-bottom-color: #00e5ff;
+
+  animation:
+    rotateOne 4s linear infinite,
+    ringPulse 3s ease-in-out infinite 1s;
+}
+
+@keyframes rotateOne {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateTwo {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ringPulse {
+  50% {
+    transform: scale(1.06);
+
+    opacity: 0.8;
+  }
+}
+
+.energy-core {
+  position: relative;
+
+  width: 125px;
+  height: 125px;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    #ffffff 0%,
+    #00e5ff 12%,
+    #006d8c 35%,
+    #00151e 68%,
+    transparent 72%
+  );
+
+  box-shadow:
+    0 0 25px #00e5ff,
+    0 0 70px rgba(0, 229, 255, 0.8),
+    0 0 140px rgba(0, 229, 255, 0.4);
+
+  animation: corePulse 2s ease-in-out infinite;
+}
+
+@keyframes corePulse {
+  0% {
+    transform: scale(0.85);
+
+    filter: brightness(0.8);
+  }
+
+  50% {
+    transform: scale(1.12);
+
+    filter: brightness(1.5);
+  }
+
+  100% {
+    transform: scale(0.85);
+
+    filter: brightness(0.8);
+  }
+}
+
+.core-light {
+  width: 35px;
+  height: 35px;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 0 20px #ffffff,
+    0 0 45px #00e5ff,
+    0 0 90px #00e5ff;
+
+  animation: lightPulse 1s ease-in-out infinite;
+}
+
+@keyframes lightPulse {
+  50% {
+    transform: scale(1.5);
+  }
+}
+
+.energy-wave {
+  position: absolute;
+
+  width: 150px;
+  height: 150px;
+
+  border-radius: 50%;
+
+  border: 2px solid #00e5ff;
+
+  opacity: 0;
+
+  animation: waveExpand 3s ease-out infinite;
+}
+
+.wave-two {
+  animation-delay: 1.5s;
+}
+
+@keyframes waveExpand {
+  0% {
+    transform: scale(0.5);
+
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(3);
+
+    opacity: 0;
+  }
+}
+
+.status {
+  position: absolute;
+
+  bottom: 70px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  color: #00e5ff;
+
+  font-size: 14px;
+
+  letter-spacing: 4px;
+
+  animation: statusBlink 1.5s ease-in-out infinite;
+}
+
+.status-dot {
+  width: 9px;
+  height: 9px;
+
+  border-radius: 50%;
+
+  background: #00ffb3;
+
+  box-shadow: 0 0 15px #00ffb3;
+}
+
+@keyframes statusBlink {
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.logo {
+  position: absolute;
+
+  color: #ffffff;
+
+  font-size: 42px;
+
+  font-weight: 800;
+
+  letter-spacing: 8px;
+
+  opacity: 0;
+
+  animation: logoReveal 1s ease forwards 7s;
+}
+
+@keyframes logoReveal {
+  to {
+    opacity: 1;
+
+    transform: scale(1.1);
+
+    text-shadow:
+      0 0 15px #ffffff,
+      0 0 35px #00e5ff;
+  }
+}

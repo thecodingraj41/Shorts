@@ -1,0 +1,145 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  height: 100vh;
+  overflow: hidden;
+  background: #020708;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.scene{
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: radial-gradient(circle,rgba(0,255,170,0.1),transparent 40%);
+}
+.radar{
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border: 2px solid #00ffb3;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 25px rgba(0,255,179,0.5),inset 0 0 35px rgba(0,255,179,0.15);
+  animation: radarPulse 3s ease-in-out infinite;
+}
+.radar-grid{
+  position: absolute;
+  inset: 15%;
+  border: 1px solid rgba(0,255,179,0.35);
+  border-radius: 50%;
+}
+.radar::before,.radar::after{
+  content: "";
+  position: absolute;
+  background: rgba(0,255,179,0.3);
+}
+.radar-grid::before{
+  width: 100%;
+  height: 1px;
+  top: 50%;
+}
+.radar-grid::after{
+  width: 1px;
+  height: 100%;
+  left: 50%;
+}
+.sweep{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: 2px;
+  transform-origin: left center;
+  background: linear-gradient(90deg,#00ffb3,transparent);
+  box-shadow: 0 0 15px #00ffb3;
+  animation: sweep 3s linear infinite;
+}
+@keyframes sweep{
+  to{
+    transform: rotate(360deg);
+  }
+}
+.target{
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #00ffb3;
+  box-shadow: 0 0 10px #00ffb3,0 0 30px #00ffb3;
+  opacity: 0;
+  animation: targetBlink 3s infinite;
+}
+.target-one{
+  top: 28%;
+  left: 68%;
+}
+.target-two{
+  top: 65%;
+  left: 30%;
+  animation-delay: 1s;
+}
+.target-three{
+  top: 38%;
+  left: 35%;
+  animation-delay: 2s;
+}
+@keyframes targetBlink{
+  0%,40%{
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50%,70%{
+    opacity: 1;
+    transform: scale(1.5);
+  }
+  100%{
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+.center-dot{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-user-drag: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  transform: translate(-50%,-50%);
+  box-shadow: 0 0 15px #fff,0 0 25px #00ffb3;
+}
+.status{
+  margin-top: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color:#00ffb3;
+  font-size: 18px;
+  letter-spacing: 5px;
+  animation: status 1.5s ease-in-out infinite;
+}
+.status-dot{
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #00ffb3;
+  box-shadow: 0 0 15px #00ffb3;
+}
+@keyframes radarPulse{
+  50%{
+    box-shadow:0 0 50px rgba(0,255,179,0.8),inset 0 0 50px rgba(0,255,179,0.25) ;
+  }
+}
+
+@keyframes status{
+  50%{
+    opacity: 0.5;
+  }
+}

@@ -1,0 +1,193 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  height: 100vh;
+  overflow: hidden;
+  background: #050505;
+  font-family: Arial, sans-serif;
+}
+
+.scene {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: radial-gradient(
+    circle at center,
+    rgba(168, 85, 247, 0.12),
+    transparent 40%
+  );
+}
+
+.sound-wave {
+  position: absolute;
+  border: 2px solid #a855f7;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  transform: rotate(45deg);
+  opacity: 0;
+  animation: waveReveal 3s ease-out infinite;
+}
+.wave-one {
+  width: 220px;
+  height: 220px;
+}
+.wave-two {
+  width: 300px;
+  height: 300px;
+  animation-delay: 0.5s;
+}
+.wave-three {
+  width: 380px;
+  height: 380px;
+  animation-delay: 1s;
+}
+@keyframes waveReveal {
+  0% {
+    transform: rotate(45deg) scale(0.5);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: rotate(45deg) scale(1.2);
+    opacity: 0;
+  }
+}
+
+.headphone {
+  position: relative;
+  width: 260px;
+  height: 220px;
+  animation: headphoneEntry 1.2s ease forwards;
+}
+
+.headband {
+  position: absolute;
+  top: 5px;
+  left: 35px;
+  width: 190px;
+  height: 180px;
+  border: 22px solid #a855f7;
+  border-bottom: 0;
+  border-radius: 100px 100px 0 0;
+  box-shadow:
+    0 0 25px rgba(168, 85, 247, 0.7),
+    inset 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.ear {
+  position: absolute;
+  top: 105px;
+  width: 65px;
+  height: 90px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #c084fc, #7e22ce);
+  box-shadow: 0 0 25px rgba(168, 85, 247, 0.8);
+}
+.left-ear {
+  left: 10px;
+}
+.right-ear {
+  right: 10px;
+}
+
+.speaker {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 38px;
+  height: 55px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #0b0612;
+  border: 3px solid #d8b4fe;
+  box-shadow: 0 0 15px #a855f7;
+  animation: speakerPulse 1.5s ease-in-out infinite;
+}
+@keyframes speakerPulse {
+  50% {
+    transform: translate(-50%, -50%) scale(1.12);
+  }
+}
+
+.music-notes span {
+  position: absolute;
+  color: #d8b4fe;
+  font-size: 35px;
+  opacity: 0;
+  animation: noteFloat 3s ease-in-out infinite;
+}
+.music-notes span:nth-child(1) {
+  left: 32%;
+  top: 35%;
+  animation-delay: 0s;
+}
+.music-notes span:nth-child(2) {
+  right: 30%;
+  top: 30%;
+  animation-delay: 1s;
+}
+.music-notes span:nth-child(3) {
+  left: 28%;
+  top: 55%;
+  animation-delay: 2s;
+}
+@keyframes noteFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) rotate(-15deg);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-70px) rotate(15deg);
+  }
+}
+
+.title {
+  margin-top: 30px;
+  font-size: 42px;
+  letter-spacing: 12px;
+  color: #fff;
+  opacity: 0;
+  animation: textReveal 1s ease forwards 2s;
+}
+.subtitle {
+  margin-top: 10px;
+  font-size: 12px;
+  letter-spacing: 5px;
+  color: #a78bfa;
+  opacity: 0;
+  animation: textReveal 1s ease forwards 3s;
+}
+
+@keyframes headphoneEntry {
+  from {
+    opacity: 0;
+    transform: scale(0.4) rotate(-15deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+@keyframes textReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

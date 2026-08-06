@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wireless Charging</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #090d18;
+            overflow: hidden;
+            color: #fff;
+        }
+        .container{
+            text-align: center;
+        }
+        .phone{
+            width: 160px;
+            height: 300px;
+            border: 4px solid #444;
+            border-radius: 28px;
+            background: #111827;
+            margin: auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0,255,255,.2);
+        }
+        .screen{
+            position: absolute;
+            inset: 10px;
+            border-radius: 18px;
+            background: #0f172a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 42px;
+            color: #00ffff;
+        }
+        .battery{
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90px;
+            height: 14px;
+            border: 2px solid #fff;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .fill{
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg,#00e5ff,#00ff84);
+            transition: .4s;
+            box-shadow: 0 0 15px cyan;
+        }
+        .ring{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            border: 3px solid rgba(0,255,255,.6);
+            border-radius: 50%;
+            opacity: 0;
+            animation: ring 2s infinite;
+        }
+        .r1{
+            width: 180px;
+            height: 180px;
+        }
+        .r2{
+            width: 240px;
+            height: 240px;
+            animation-delay: .5s;
+        }
+        .r3{
+            width: 300px;
+            height: 300px;
+            animation-delay: 1s;
+        }
+        @keyframes ring{
+            0%{
+                transform: translate(-50%,-50%) scale(.5);
+                opacity: 1;
+            }
+            100%{
+                transform: translate(-50%,-50%) scale(1.4);
+                opacity: 0;
+            }
+        }
+        .status{
+            margin-top: 35px;
+            font-size: 28px;
+            letter-spacing: 2px;
+            color: #00ffff;
+        }
+        .percent{
+            margin-top: 15px;
+            font-size: 55px;
+            font-weight: bold;
+            text-shadow: 0 0 20px cyan;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="phone">
+        <div class="screen">⚡</div>
+
+        <div class="battery">
+          <div class="fill" id="fill"></div>
+        </div>
+      </div>
+
+      <div class="ring r1"></div>
+      <div class="ring r2"></div>
+      <div class="ring r3"></div>
+
+      <div class="status" id="status">WIRELESS CHARGING</div>
+
+      <div class="percent" id="percent">0%</div>
+    </div>
+
+    <script>
+      const fill = document.getElementById("fill");
+      const percent = document.getElementById("percent");
+      const status = document.getElementById("status");
+
+      let value = 0;
+
+      const timer = setInterval(() => {
+        value += 2;
+
+        fill.style.width = value + "%";
+        percent.innerHTML = value + "%";
+
+        if (value == 25) {
+          status.innerHTML = "FAST CHARGING";
+        }
+
+        if (value == 50) {
+          status.innerHTML = "OPTIMIZING POWER";
+        }
+
+        if (value == 75) {
+          status.innerHTML = "ALMOST FULL";
+        }
+
+        if (value >= 100) {
+          clearInterval(timer);
+
+          status.innerHTML = "FULLY CHARGED ✓";
+        }
+      }, 120);
+    </script>
+  </body>
+</html>
