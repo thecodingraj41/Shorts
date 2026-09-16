@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  height: 100vh;
+  overflow: hidden;
+  background: #020106;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.scene {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: radial-gradient(circle, rgba(130, 0, 255, 0.15), transparent 45%);
+}
+.hole {
+  width: 105px;
+  height: 105px;
+  border-radius: 50%;
+  background: #000;
+  box-shadow:
+    0 0 25px #7c00ff,
+    0 0 60px #5b00c9,
+    0 0 100px rgba(124, 0, 255, 0.7);
+  z-index: 5;
+  animation: holePulse 2s ease-in-out infinite;
+}
+.orbit {
+  position: absolute;
+  border-radius: 50%;
+  border: 10px solid transparent;
+  transform: rotate(-25deg);
+  filter: drop-shadow(0 0 12px #ff5e00);
+}
+.orbit-one {
+  width: 270px;
+  height: 100px;
+  border-top-color: #ffb000;
+  border-bottom-color: #ff3d00;
+  animation: spin 3s linear infinite;
+}
+.orbit-two {
+  width: 270px;
+  height: 75px;
+  border-left-color: #ffea00;
+  border-right-color: #ffd400;
+  animation: spin 2s linear infinite reverse;
+}
+.particles {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow:
+    90px -80px #ff9d00,
+    -100px -50px #ff4500,
+    120px 60px #ffd000,
+    -110px 80px #ff5e00;
+  animation: particles 2s ease-in-out infinite;
+}
+.status {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ff8c00;
+  font-size: 15px;
+  letter-spacing: 5px;
+  animation: status 1.5s ease-in-out infinite;
+}
+.status span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff8c00;
+  box-shadow: 0 0 15px #ff8c00;
+}
+@keyframes spin {
+  to {
+    transform: rotate(335deg);
+  }
+}
+@keyframes holePulse {
+  50% {
+    transform: scale(1.15);
+    box-shadow:
+      0 0 40px #7c00ff,
+      0 0 80px #5b00c9,
+      0 0 130px rgba(124, 0, 255, 0.8);
+  }
+}
+@keyframes status {
+  50% {
+    opacity: 0.5;
+  }
+}
+@keyframes particles {
+  50% {
+    transform: scale(1.8);
+    opacity: 0.3;
+  }
+}
+.black-hole {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
